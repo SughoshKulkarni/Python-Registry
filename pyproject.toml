@@ -1,11 +1,28 @@
 [project]
-name = "Python-registry"
+name = "python-registry-pattern"
 version = "0.1.0"
-description = "Add your description here"
+description = "Examples demonstrating the Registry Pattern in Python - a design pattern to replace complex if/else chains with a flexible, decoupled system"
 readme = "README.md"
 requires-python = ">=3.13"
+license = {text = "MIT"}
+authors = [
+    {name = "Sughosh Kulkarni", email = "47445832+SughoshKulkarni@users.noreply.github.com"}
+]
+keywords = ["registry", "design-pattern", "python", "solid-principles", "decorator-pattern"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+]
 dependencies = [
     "jupyter>=1.1.1",
     "rich>=14.1.0",
     "typer>=0.17.3",
 ]
+
+[project.urls]
+Homepage = "https://github.com/SughoshKulkarni/Python-Registry"
+Repository = "https://github.com/SughoshKulkarni/Python-Registry"
+"Bug Tracker" = "https://github.com/SughoshKulkarni/Python-Registry/issues"
