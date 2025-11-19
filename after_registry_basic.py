@@ -15,8 +15,9 @@ See after_registry/main.py for a more advanced example with plugin loading.
 """
 
 import json
+from collections.abc import Callable
 from functools import wraps
-from typing import Any, Callable
+from typing import Any
 
 type Data = dict[str, Any]
 type ExportFn = Callable[[Data], None]
@@ -27,13 +28,14 @@ exporters: dict[str, ExportFn] = {}
 
 def register_exporter(name: str):
     """Decorator to register an exporter function in the registry.
-    
+
     Args:
         name: The format name/key under which to register the exporter function.
-        
+
     Returns:
         A decorator function that registers the exporter.
     """
+
     def decorator(func: ExportFn):
         @wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
@@ -48,9 +50,9 @@ def register_exporter(name: str):
 @register_exporter("pdf")
 def export_pdf(data: Data) -> None:
     """Export data in PDF format (placeholder implementation).
-    
+
     This function is automatically registered under the "pdf" key.
-    
+
     Args:
         data: Dictionary containing the data to export.
     """
@@ -60,9 +62,9 @@ def export_pdf(data: Data) -> None:
 @register_exporter("csv")
 def export_csv(data: Data) -> None:
     """Export data in CSV format (placeholder implementation).
-    
+
     This function is automatically registered under the "csv" key.
-    
+
     Args:
         data: Dictionary containing the data to export.
     """
@@ -72,9 +74,9 @@ def export_csv(data: Data) -> None:
 @register_exporter("json")
 def export_json(data: Data) -> None:
     """Export data in JSON format.
-    
+
     This function is automatically registered under the "json" key.
-    
+
     Args:
         data: Dictionary containing the data to export.
     """
@@ -84,14 +86,14 @@ def export_json(data: Data) -> None:
 
 def export_data(data: Data, format: str) -> None:
     """Export data using the specified format from the registry.
-    
+
     Looks up the exporter function in the registry and calls it.
     No modification needed when new exporters are added!
-    
+
     Args:
         data: Dictionary containing the data to export.
         format: String identifier for the export format.
-        
+
     Raises:
         ValueError: If no exporter is registered for the specified format.
     """

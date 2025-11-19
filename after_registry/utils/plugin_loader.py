@@ -12,14 +12,14 @@ from pathlib import Path
 
 def load_plugins() -> None:
     """Dynamically load all plugins from the plugins directory.
-    
+
     This function walks through the plugins directory and imports all Python modules
     it finds. This triggers the decorator registration for any functions decorated
     with @register_exporter, making them available in the exporters registry.
-    
+
     The function uses pkgutil.walk_packages to recursively discover all modules
     in the plugins directory and its subdirectories.
-    
+
     Note:
         Ensure __init__.py exists in the utils directory for proper module imports.
     """

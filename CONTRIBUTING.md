@@ -64,6 +64,26 @@ python after_registry_basic.py
 python after_registry/main.py
 ```
 
+### Code Quality Tools
+
+This project uses [Ruff](https://docs.astral.sh/ruff/) for linting and formatting:
+
+```bash
+# Install ruff (if not already installed)
+pip install ruff
+
+# Check for linting issues
+ruff check .
+
+# Auto-fix linting issues
+ruff check . --fix
+
+# Format code
+ruff format .
+```
+
+Run these commands before committing to ensure code quality.
+
 ## Project Structure
 
 ```
@@ -203,9 +223,10 @@ To add a new exporter format:
 ### Before Submitting
 
 1. **Test your changes**: Run all examples to ensure they work
-2. **Check code style**: Ensure your code follows the style guidelines
-3. **Update documentation**: Update README.md if needed
-4. **Commit your changes**:
+2. **Lint and format code**: Run `ruff check . --fix && ruff format .`
+3. **Check code style**: Ensure your code follows the style guidelines
+4. **Update documentation**: Update README.md if needed
+5. **Commit your changes**:
    ```bash
    git add .
    git commit -m "Brief description of changes"

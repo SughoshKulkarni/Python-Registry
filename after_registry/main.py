@@ -11,14 +11,14 @@ from utils.registry import Data, exporters
 
 def export_data(data: Data, format: str) -> None:
     """Export data using the specified format.
-    
+
     Looks up the appropriate exporter function from the registry and calls it
     with the provided data.
-    
+
     Args:
         data: Dictionary containing the data to export.
         format: String identifier for the export format (e.g., "pdf", "csv", "json").
-        
+
     Raises:
         ValueError: If no exporter is registered for the specified format.
     """

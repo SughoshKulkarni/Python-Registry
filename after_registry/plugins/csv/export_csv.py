@@ -10,7 +10,7 @@ from utils.registry import Data, register_exporter
 @register_exporter("csv")
 def export_csv(data: Data) -> None:
     """Export data in CSV format.
-    
+
     Args:
         data: Dictionary containing the data to export.
     """

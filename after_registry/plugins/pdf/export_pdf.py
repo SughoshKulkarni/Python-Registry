@@ -10,7 +10,7 @@ from utils.registry import Data, register_exporter
 @register_exporter("pdf")
 def export_pdf(data: Data) -> None:
     """Export data in PDF format.
-    
+
     Args:
         data: Dictionary containing the data to export.
     """

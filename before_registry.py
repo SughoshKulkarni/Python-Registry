@@ -9,7 +9,8 @@ This is the "before" example that the registry pattern aims to improve.
 """
 
 import json
-from typing import Any, Callable
+from collections.abc import Callable
+from typing import Any
 
 type Data = dict[str, Any]
 type ExportFn = Callable[[Data], None]
@@ -17,7 +18,7 @@ type ExportFn = Callable[[Data], None]
 
 def export_pdf(data: Data) -> None:
     """Export data in PDF format (placeholder implementation).
-    
+
     Args:
         data: Dictionary containing the data to export.
     """
@@ -26,7 +27,7 @@ def export_pdf(data: Data) -> None:
 
 def export_csv(data: Data) -> None:
     """Export data in CSV format (placeholder implementation).
-    
+
     Args:
         data: Dictionary containing the data to export.
     """
@@ -35,7 +36,7 @@ def export_csv(data: Data) -> None:
 
 def export_json(data: Data) -> None:
     """Export data in JSON format.
-    
+
     Args:
         data: Dictionary containing the data to export.
     """
@@ -45,14 +46,14 @@ def export_json(data: Data) -> None:
 
 def export_data(data: Data, format: str) -> None:
     """Export data using the specified format via if/else chain (anti-pattern).
-    
+
     This function demonstrates the problem: every time a new export format is added,
     this function must be modified, violating the Open/Closed Principle.
-    
+
     Args:
         data: Dictionary containing the data to export.
         format: String identifier for the export format.
-        
+
     Raises:
         ValueError: If the format is not supported.
     """
