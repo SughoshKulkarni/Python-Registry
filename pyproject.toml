@@ -4,7 +4,6 @@ version = "0.1.0"
 description = "Examples demonstrating the Registry Pattern in Python - a design pattern to replace complex if/else chains with a flexible, decoupled system"
 readme = "README.md"
 requires-python = ">=3.13"
-license = {text = "MIT"}
 keywords = ["registry", "design-pattern", "python", "solid-principles", "decorator-pattern"]
 dependencies = [
     "jupyter>=1.1.1",
