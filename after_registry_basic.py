@@ -99,7 +99,7 @@ def export_data(data: Data, format: str) -> None:
     """
     exporter = exporters.get(format)
     if exporter is None:
-        raise ValueError(f"❌ No exporter found for format: {format}")
+        raise ValueError(f"No exporter found for format: {format}")
     exporter(data)
 
 

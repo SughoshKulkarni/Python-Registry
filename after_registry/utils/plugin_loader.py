@@ -2,6 +2,7 @@
 
 This module provides functionality to automatically discover and import all plugin
 modules from the plugins directory. This ensures that all exporter functions
+after_registry/utils/plugin_loader.py:5
 decorated with @register_exporter are registered when load_plugins() is called.
 """
 

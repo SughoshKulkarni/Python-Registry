@@ -91,17 +91,11 @@ def export_pdf(data):
 1. **Clone the repository**
    ```bash
    git clone https://github.com/SughoshKulkarni/Python-Registry.git
-   cd Python-Registry
    ```
 
 2. **Install dependencies** (using [uv](https://github.com/astral-sh/uv))
    ```bash
    uv sync
-   ```
-
-   Or using pip:
-   ```bash
-   pip install -r requirements.txt  # If available
    ```
 
 ### Running the Examples
@@ -123,7 +117,7 @@ Exporting data to JSON:
   "name": "Alice",
   "age": 30
 }
-❌ No exporter found for format: xlsx
+No exporter found for format: xlsx
 ```
 
 #### 2. After Registry Pattern - Basic Example
@@ -198,9 +192,3 @@ To add a new export format (e.g., XML):
 - <a id="arjancodes-video"></a>[YouTube: I Hate Long If-Elif Chains: This Design Pattern Solved It Once and For All](https://youtu.be/g7EGMWvJ1fI?si=5WVwtWvKiH-O90Qg)
 - <a id="open-closed-principle"></a>[Python Tutorial: Python Open–closed principle](https://www.pythontutorial.net/python-oop/python-open-closed-principle/)
 - [GitHub Repository: ArjanCodes/examples/2025/registry](https://github.com/ArjanCodes/examples/tree/ef76bfa8e2cb1a83651e85ca8cbf192cb504533b/2025/registry)
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for more details.

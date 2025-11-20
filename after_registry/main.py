@@ -44,7 +44,7 @@ def main() -> None:
     try:
         export_data(sample_data, "xlsx")
     except ValueError as e:
-        print(f"❌ Error: {e}")
+        print(f"Error: {e}")
 
 
 if __name__ == "__main__":

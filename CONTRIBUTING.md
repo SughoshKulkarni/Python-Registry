@@ -127,7 +127,7 @@ git checkout -b fix/your-bug-fix
 This project follows PEP 8 style guidelines. Key points:
 
 - Use 4 spaces for indentation (no tabs)
-- Maximum line length: 88 characters (Black formatter standard)
+- Maximum line length: 88 characters (ruff formatter standard)
 - Use type hints for function signatures
 - Write docstrings for all modules, classes, and functions
 
@@ -175,13 +175,11 @@ def export_data(data: Data, format: str) -> None:
 
 To add a new exporter format:
 
-1. Create a new directory under `after_registry/plugins/`:
-   ```bash
-   mkdir after_registry/plugins/your_format
-   touch after_registry/plugins/your_format/__init__.py
-   ```
+1. Create a new directory under `after_registry/plugins/` named `your_format`
 
-2. Add a docstring to `__init__.py`:
+2. Create an empty `__init__.py` file in `after_registry/plugins/your_format/`
+
+3. Add a docstring to `__init__.py`:
    ```python
    """Your format plugin package for exporting data."""
    ```
@@ -262,11 +260,3 @@ The exporter is automatically discovered via the plugin loader.
    - Fill in the PR template with details about your changes
 
 3. **Respond to feedback**: Address any comments or requested changes
-
-## Questions?
-
-If you have questions about contributing, feel free to:
-- Open an issue on GitHub
-- Start a discussion in the repository
-
-Thank you for contributing! 🎉
