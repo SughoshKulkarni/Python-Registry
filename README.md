@@ -1,8 +1,17 @@
 # Python Registry Pattern
 
-This repository contains examples demonstrating the Registry Pattern in Python, as featured in the [ArjanCodes video](#arjancodes-video). This design pattern is used to replace complex, hard-coded if/else chains with a flexible, decoupled system that allows for dynamic behavior selection and easy extensibility.
+This repository contains examples demonstrating the **Registry Pattern** in Python, as featured in the [ArjanCodes video](#arjancodes-video). This design pattern is used to replace complex, hard-coded if/else chains with a flexible, decoupled system that allows for dynamic behavior selection and easy extensibility.
 
-The pattern helps resolve the [Open/Closed principle](#open-closed-principle) of the SOLID principles by allowing new functionality to be added without modifying existing code.
+The pattern helps resolve the [Open/Closed Principle](#open-closed-principle) of the SOLID principles by allowing new functionality to be added without modifying existing code.
+
+## Table of Contents
+
+- [The Problem: The "If/Else" Hot Mess](#the-problem-the-ifelse-hot-mess)
+- [The Solution: The Registry Pattern](#the-solution-the-registry-pattern)
+- [Pros & Cons](#pros--cons)
+- [How to Use](#how-to-use)
+- [Project Structure](#project-structure)
+- [Resources](#resources)
 
 ## The Problem: The "If/Else" Hot Mess
 
@@ -79,34 +88,104 @@ def export_pdf(data):
 
 ### Setup
 
-1. Clone the repository
-2. Install dependencies
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/SughoshKulkarni/Python-Registry.git
+   ```
 
-    ```python
-    uv sync
-    ```
+2. **Install dependencies** (using [uv](https://github.com/astral-sh/uv))
+   ```bash
+   uv sync
+   ```
 
-### Before registry pattern
+### Running the Examples
 
-```python
+#### 1. Before Registry Pattern (Anti-Pattern)
+
+This example demonstrates the problem with if/else chains:
+
+```bash
 python before_registry.py
 ```
 
-### After registry pattern
+**Output:**
+```
+Exporting data to PDF: {'name': 'Alice', 'age': 30}
+Exporting data to CSV: {'name': 'Alice', 'age': 30}
+Exporting data to JSON:
+{
+  "name": "Alice",
+  "age": 30
+}
+No exporter found for format: xlsx
+```
 
-To run the basic after registry example:
+#### 2. After Registry Pattern - Basic Example
 
-```python
+This example shows the registry pattern with decorator-based self-registration:
+
+```bash
 python after_registry_basic.py
 ```
 
-The above script is basic only in the sense that all exporters are defined in a single file. To see a more advanced example with dynamic plugin loading, run:
+All exporters are defined in a single file, making it easy to see how the pattern works.
 
-```python
+#### 3. After Registry Pattern - Advanced with Plugin Loading
+
+This example demonstrates dynamic plugin loading from separate modules:
+
+```bash
 python after_registry/main.py
 ```
 
-The above script demonstrates loading exporter functions from separate modules in a `plugins` directory.
+The script automatically discovers and loads exporter functions from the `plugins` directory, demonstrating a production-ready plugin architecture.
+
+## Project Structure
+
+```
+Python-Registry/
+├── before_registry.py              # Anti-pattern: if/else chain example
+├── after_registry_basic.py         # Basic registry pattern in single file
+├── after_registry/                 # Advanced example with plugin architecture
+│   ├── main.py                    # Main entry point with plugin loading
+│   ├── utils/                     # Core registry utilities
+│   │   ├── registry.py           # Registry and decorator implementation
+│   │   └── plugin_loader.py      # Dynamic plugin discovery
+│   └── plugins/                   # Exporter plugins
+│       ├── csv/
+│       │   └── export_csv.py     # CSV exporter plugin
+│       ├── json/
+│       │   └── export_json.py    # JSON exporter plugin
+│       └── pdf/
+│           └── export_pdf.py     # PDF exporter plugin
+├── README.md                       # This file
+└── pyproject.toml                 # Project configuration
+```
+
+## Adding a New Exporter Plugin
+
+To add a new export format (e.g., XML):
+
+1. Create a new directory under `after_registry/plugins/`:
+   ```bash
+   mkdir after_registry/plugins/xml
+   touch after_registry/plugins/xml/__init__.py
+   ```
+
+2. Create the exporter module:
+   ```python
+   # after_registry/plugins/xml/export_xml.py
+   """XML exporter plugin."""
+   
+   from utils.registry import Data, register_exporter
+   
+   @register_exporter("xml")
+   def export_xml(data: Data) -> None:
+       """Export data in XML format."""
+       print(f"Exporting data to XML: {data}")
+   ```
+
+3. That's it! The plugin will be automatically discovered and registered.
 
 ## Resources
 
