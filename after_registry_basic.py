@@ -17,10 +17,10 @@ See after_registry/main.py for a more advanced example with plugin loading.
 import json
 from collections.abc import Callable
 from functools import wraps
-from typing import Any
+from typing import Any, TypeAlias
 
-type Data = dict[str, Any]
-type ExportFn = Callable[[Data], None]
+Data: TypeAlias = dict[str, Any]
+ExportFn: TypeAlias = Callable[[Data], None]
 
 # The registry: maps format name to export function
 exporters: dict[str, ExportFn] = {}

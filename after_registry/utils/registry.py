@@ -6,10 +6,10 @@ exporter functions. It uses a decorator pattern to allow functions to self-regis
 
 from collections.abc import Callable
 from functools import wraps
-from typing import Any
+from typing import Any, TypeAlias
 
-type Data = dict[str, Any]  # Data is a dictionary with string keys and any type values
-type ExportFn = Callable[[Data], None]  # Function that takes Data and returns None
+Data: TypeAlias = dict[str, Any]  # Data is a dictionary with string keys and any type values
+ExportFn: TypeAlias = Callable[[Data], None]  # Function that takes Data and returns None
 
 # The registry: maps format name to export function
 exporters: dict[str, ExportFn] = {}

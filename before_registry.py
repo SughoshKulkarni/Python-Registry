@@ -10,10 +10,10 @@ This is the "before" example that the registry pattern aims to improve.
 
 import json
 from collections.abc import Callable
-from typing import Any
+from typing import Any, TypeAlias
 
-type Data = dict[str, Any]
-type ExportFn = Callable[[Data], None]
+Data: TypeAlias = dict[str, Any]
+ExportFn: TypeAlias = Callable[[Data], None]
 
 
 def export_pdf(data: Data) -> None:
@@ -64,7 +64,7 @@ def export_data(data: Data, format: str) -> None:
     elif format == "json":
         export_json(data)
     else:
-        raise ValueError(f"❌ No exporter found for format: {format}")
+        raise ValueError(f"No exporter found for format: {format}")
 
 
 def main() -> None:

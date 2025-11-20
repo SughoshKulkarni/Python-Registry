@@ -1096,7 +1096,7 @@ wheels = [
 ]
 
 [[package]]
-name = "python-registry"
+name = "python-registry-pattern"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
